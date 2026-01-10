@@ -1,5 +1,6 @@
 **Purpose**   :  A replacement of the RichClient imageList using scripting.dictionary and GDI+ to store and extract VB6 native type images.
-(JPG, BMP, PNG tested)
+(JPG, BMP, PNG tested). Created to provide an imageList class that has potential for 64bit operation using TwinBasic. RichClient 5/6 are 32bit only
+and cannot compile to 64bit binaries using TwinBasic. This component removes a dependency on the 32bit Richclient imagelist for loading non-RC6 image controls.
 
 PNGs will display correctly with transparency when rendered to a VB6 control using GDI+.
 
