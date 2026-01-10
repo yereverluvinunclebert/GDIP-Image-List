@@ -1,4 +1,4 @@
-Purpose   :  A replacement of the RichClient imageList using scripting.dictionary and GDI+ to store and extract VB6 native type images.
+**Purpose**   :  A replacement of the RichClient imageList using scripting.dictionary and GDI+ to store and extract VB6 native type images.
 (JPG, BMP, PNG tested)
 
 PNGs will display correctly with transparency when rendered to a VB6 control using GDI+.
@@ -18,24 +18,24 @@ Why is this ImageList useful?
 * It is quicker to pull images from the dictionary at runtime than directly from file.
 * If used with Elroy's standard picture Ex project it can parse and render alpha images (PNGs &c) directly to VB6 picture/imageboxes.
 
-Limitations?
+**Limitations?**
 
 * You can't currently use this imageList with RichClient as Olaf's code is designed specifically to work with his own imageList, eg. CC.RenderSurfaceContent.
 * VB6 still can't handle PNGs with alpha unless you use something like Elroy's standard picture Ex project or GDI+ render to a VB6 control.
   Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency.
   It should display perfectly using TwinBasic's native controls that have automatic PNG support built-in.
 
-Usage:
+**Usage:**
 
 Add a public or private variable to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
-**Public gdipImageList As New cGdipImageList**
+Public gdipImageList As New cGdipImageList
 
 Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
 
-**Public gGdipImageListInstanceCount As Long**
+Public gGdipImageListInstanceCount As Long
 
-Properties/routines available:
+**Properties/routines available:**
 
 * To add an image to the image list - gdipImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
 * To add an image to a standard VB6 image control - Set imgAbout.Picture = gdipImageList.Picture("about-icon-dark")
