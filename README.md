@@ -106,3 +106,17 @@ To set the opacity of the image priror to loading
 To clear the imageList
   
     gdipImageList.Clear   
+
+
+**Example Usage: **
+
+I use the imageList in a few of my own programs:
+
+The concept came from my dock replacement, SteamyDock:
+
+![hollerith0002](https://github.com/user-attachments/assets/f661e9c0-40ad-4c83-ad49-6a3de44077fd)
+
+The GDIPImageList is used to place the Jpeg images on the top of the form for the configuration window for all of my recent steampunk 'widgets'
+
+![gdpImageList001](https://github.com/user-attachments/assets/48b95067-c772-40b7-81d0-ffc55f0bf32e)
+
