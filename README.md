@@ -1,6 +1,6 @@
 
-Purpose   : Replacement of the RichClient imageList using the scripting.dictionary and GDI+ to store and pull VB6 native type images.
-             JPG, BMP, PNG tested so far. 
+Purpose   :  A replacement of the RichClient imageList using scripting.dictionary and GDI+ to store and extract VB6 native type images.
+             JPG, BMP, PNG tested. 
              
              PNGs will display correctly with transparency when rendered to a VB6 control using GDI+.
              
@@ -9,9 +9,10 @@ Purpose   : Replacement of the RichClient imageList using the scripting.dictiona
 
              Why is this ImageList useful?
 
-             * It is a Dictionary-backed ImageList, when using Cristian Buses dictionary replacement, no scripting runtime dependency.
+             * It is a Dictionary-backed ImageList, using scripting.dictionary, a Windows component.
+             * When using Cristian Buse's dictionary replacement, there is no scripting runtime dependency (recommended).
              * It can store JPG, BMP, PNG files and other types too.
-             * It can store images with alpha transparency as GDI+ provides this capability
+             * It can store images with alpha transparency as GDI+ provides this capability.
              * It can store images of varying size, not just small 16x16 or 32x32 icons as per the old VB6 imageList.
              * Avoids RichClient dependency.
              * Avoids runtime obsolescence.
@@ -23,8 +24,8 @@ Purpose   : Replacement of the RichClient imageList using the scripting.dictiona
 
              Limitations?
 
-             * You can't currently use this imageList with RichClient as Olaf's code is designed specifically to work with his own imageList, eg. CC.RenderSurfaceContent
-             * VB6 still can't handle PNGs with alpha unless you use something like Elroys standard picture Ex project or GDI+ render to a VB6 control.
+             * You can't currently use this imageList with RichClient as Olaf's code is designed specifically to work with his own imageList, eg. CC.RenderSurfaceContent.
+             * VB6 still can't handle PNGs with alpha unless you use something like Elroy's standard picture Ex project or GDI+ render to a VB6 control.
 
              Usage:
 
