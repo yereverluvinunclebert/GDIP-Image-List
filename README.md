@@ -116,7 +116,9 @@ The concept came from my dock replacement, SteamyDock:
 
 ![hollerith0002](https://github.com/user-attachments/assets/f661e9c0-40ad-4c83-ad49-6a3de44077fd)
 
-The GDIPImageList is used to place the Jpeg images on the top of the form for the configuration window for all of my recent steampunk 'widgets'
+In SteamyDock all the images are loaded at startup into two scripting.dictionaries, one for the large images and the other for the small images. They are then pulled from the dictionary as needed.
+
+The GDIPImageList is also used to place the Jpeg images on the top of the configuration form for all of my recent steampunk 'widgets'.
 
 ![gdpImageList001](https://github.com/user-attachments/assets/48b95067-c772-40b7-81d0-ffc55f0bf32e)
 
