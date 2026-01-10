@@ -27,6 +27,8 @@ Why is this ImageList useful?
 
 **Usage:**
 
+If using the scripting.dictionary, you will need to add a project reference to the MS scripting runtime scrrun.dll
+
 Add a public or private variable to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
     Public gdipImageList As New cGdipImageList
