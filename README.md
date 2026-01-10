@@ -108,7 +108,7 @@ To clear the imageList
     gdipImageList.Clear   
 
 
-**Example Usage: **
+**Examples of Use:**
 
 I use the imageList in a few of my own programs:
 
