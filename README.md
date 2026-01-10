@@ -5,17 +5,17 @@ PNGs will display correctly with transparency when rendered to a VB6 control usi
 
 Why is this ImageList useful?
 
-* It is a Dictionary-backed ImageList, using the scripting.dictionary object, a Windows component.
-* When using [Cristian Buse's dictionary replacement](https://github.com/cristianbuse/VBA-FastDictionary), there is no scripting runtime dependency (recommended).
+* It is quicker to pull pre-loaded images from the dictionary at runtime than pulling them when needed, directly from file.
 * It can store JPG, BMP, PNG files and other types too.
 * It can store images with alpha transparency as GDI+ provides this capability.
 * It can store images of varying size, not just small 16x16 or 32x32 icons as was the limit of the old VB6 imageList.
+* You have full control as it is FOSS.
+* The usage syntax is very similar to that of the Rich Client ImageList for easy drop-in replacement.
+* It is a Dictionary-backed ImageList, using the scripting.dictionary object, a standard dependable Windows component.
+* When using [Cristian Buse's dictionary replacement](https://github.com/cristianbuse/VBA-FastDictionary), there is no scripting runtime dependency (recommended).
 * Avoids RichClient dependency.
 * Avoids runtime obsolescence.
 * Uses dependable GDI+ to load and unload the images.
-* You have full control as it is FOSS.
-* The usage syntax is very similar to that of the Rich Client ImageList for easy drop-in replacement.
-* It is quicker to pull images from the dictionary at runtime than directly from file.
 * If used with Elroy's standard picture Ex project it can parse and render alpha images (PNGs &c) directly to VB6 picture/imageboxes.
 
 **Limitations?**
