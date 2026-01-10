@@ -35,13 +35,23 @@ Add a public variable to a module (BAS) to provide an instance counter for each 
 
     Public gGdipImageListInstanceCount As Long
 
-In Class_Initialize, if you are using Cristian Buse's Dictionary replacement for the Scripting.Dictionary then comment out this line:
+if you are using Cristian Buse's Dictionary replacement for the Scripting.Dictionary     
+
+In Class declarations, comment out this line:
+
+    'Private mDict As scripting.dictionary
+    
+and replace it with:    
+
+    Private mDict As Dictionary
+
+In Class_Initialize, then comment out this line:
 
     'Set mDict = CreateObject("Scripting.Dictionary")
     
 and replace it with:
 
-    Set mDict = New Dictionary ' 
+    Set mDict = New Dictionary 
 
 **Properties/routines available:**
 
