@@ -45,30 +45,30 @@ To add an image to a standard VB6 image control
   
     Set imgAbout.Picture = gdipImageList.Picture("about-icon-dark")
   
-* To remove an image from the imageList
+To remove an image from the imageList
   
     gdipImageList.Remove "about-icon-dark"
   
-* To obtain a count of the images in the imageList
+To obtain a count of the images in the imageList
   
     dictionaryCount = gdipImageList.count
   
-* To check if an image is already loaded into the imageList
+To check if an image is already loaded into the imageList
   
     If gdipImageList.Exists(thiskey) Then ...
   
-* To set the imageWidth
+To set the imageWidth
   
     gdipImageList.ImageWidth = 150  ' note: by default a value of 0, the image's real width will be used
   
-* To set the imageHeight
+To set the imageHeight
   
     gdipImageList.ImageHeight  ditto
   
-* To set the opacity of the image priror to loading
+To set the opacity of the image priror to loading
   
     gdipImageList.ImageOpacity = 100  ' 0-100% - TwinBasic will handle the opacity, VB6 won't.
   
-* To clear the imageList
+To clear the imageList
   
     gdipImageList.Clear   
