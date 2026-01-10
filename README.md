@@ -28,13 +28,15 @@ Why is this ImageList useful?
 
   Note: It should load and display perfectly using TwinBasic's native controls that have automatic PNG support built-in.
 
-**Usage:**
+**Dependencies:**
 
 If using the scripting.dictionary, you will need to add a project reference to the MS scripting runtime scrrun.dll
 
 <img width="445" height="359" alt="image" src="https://github.com/user-attachments/assets/936f6161-8361-447a-8f32-cc0681ad3656" />
 
 
+
+**Usage:**
 
 Add a public or private variable to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
