@@ -1,43 +1,43 @@
 
-' Purpose   : Replacement of the RichClient imageList using the scripting.dictionary and GDI+ to store and pull VB6 native type images.
-'             JPG, BMP, PNG tested so far. PNGs will display correctly with transparency if displayed using GDI+.
-'             Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency
-'             but should display perfectly
-'             using TwinBasic's native controls that have automatic PNG support built in.
-'
-'             Why is this ImageList useful?
+Purpose   : Replacement of the RichClient imageList using the scripting.dictionary and GDI+ to store and pull VB6 native type images.
+             JPG, BMP, PNG tested so far. PNGs will display correctly with transparency if displayed using GDI+.
+             Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency
+             but should display perfectly
+             using TwinBasics native controls that have automatic PNG support built in.
 
-'             * It is a Dictionary-backed ImageList, when using Cristian Buse's dictionary replacement, no scripting runtime dependency.
-'             * It can store JPG, BMP, PNG files and others too.
-'             * It can store images with alpha transparency as GDI+ provides this capability
-'             * It can store images of varying size, not just small 16x16 or 32x32 icons as per the old VB6 imageList.
-'             * Avoids RichClient dependency.
-'             * Avoids runtime obsolescence.
-'             * Uses dependable GDI+ to load and unload the images.
-'             * You have full control as it is FOSS.
-'             * The usage syntax is very similar to Rich Client's for easy drop-in replacement.
-'             * It is quicker to pull images from the dictionary than directly from file.
-'             * If used with Elroy's standard picture Ex project it can parse and render alpha images (PNGs &c) directly to VB6 picture/imageboxes.
-'
-'             Limitations?
-'
-'             * You can't currently use this imageList with RichClient as Olaf's code is designed specifically to work with his own imageList, eg. CC.RenderSurfaceContent
-'             * VB6 still can't handle PNGs with alpha unless you use something like Elroy's standard picture Ex project.
-'
-'             Usage:
-'
-'             Add a public or private variable to a module (BAS) in order to create a new GDI+ image list instance.
-'             * Public gdipImageList As New cGdipImageList
-'
-'             Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
-'             * Public gGdipImageListInstanceCount As Long
-'
-'             gdipImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
-'             Set imgAbout.Picture = gdipImageList.Picture("about-icon-dark")
-'             gdipImageList.Remove "about-icon-dark"
-'             dictionaryCount = gdipImageList.count
-'             If gdipImageList.Exists(thiskey) Then ...
-'             gdipImageList.ImageWidth = 150 ' sets the imageWidth, a value of zero causes the image's real width to be used
-'             gdipImageList.ImageHeight ' ditto
-'             gdipImageList.ImageOpacity = 100 ' 0-100% prior to loading will set the opacity
-'             gdipImageList.Clear  ' clears the imageList
+             Why is this ImageList useful?
+
+             * It is a Dictionary-backed ImageList, when using Cristian Buses dictionary replacement, no scripting runtime dependency.
+             * It can store JPG, BMP, PNG files and others too.
+             * It can store images with alpha transparency as GDI+ provides this capability
+             * It can store images of varying size, not just small 16x16 or 32x32 icons as per the old VB6 imageList.
+             * Avoids RichClient dependency.
+             * Avoids runtime obsolescence.
+             * Uses dependable GDI+ to load and unload the images.
+             * You have full control as it is FOSS.
+             * The usage syntax is very similar to Rich Clients for easy drop-in replacement.
+             * It is quicker to pull images from the dictionary than directly from file.
+             * If used with Elroys standard picture Ex project it can parse and render alpha images (PNGs &c) directly to VB6 picture/imageboxes.
+
+             Limitations?
+
+             * You cant currently use this imageList with RichClient as Olafs code is designed specifically to work with his own imageList, eg. CC.RenderSurfaceContent
+             * VB6 still cant handle PNGs with alpha unless you use something like Elroys standard picture Ex project.
+
+             Usage:
+
+             Add a public or private variable to a module (BAS) in order to create a new GDI+ image list instance.
+             * Public gdipImageList As New cGdipImageList
+
+             Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
+             * Public gGdipImageListInstanceCount As Long
+
+             gdipImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
+             Set imgAbout.Picture = gdipImageList.Picture("about-icon-dark")
+             gdipImageList.Remove "about-icon-dark"
+             dictionaryCount = gdipImageList.count
+             If gdipImageList.Exists(thiskey) Then ...
+             gdipImageList.ImageWidth = 150  sets the imageWidth, a value of zero causes the images real width to be used
+             gdipImageList.ImageHeight  ditto
+             gdipImageList.ImageOpacity = 100  0-100% prior to loading will set the opacity
+             gdipImageList.Clear   clears the imageList
