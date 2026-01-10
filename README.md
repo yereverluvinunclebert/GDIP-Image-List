@@ -35,6 +35,7 @@ If using the scripting.dictionary, you will need to add a project reference to t
 <img width="445" height="359" alt="image" src="https://github.com/user-attachments/assets/936f6161-8361-447a-8f32-cc0681ad3656" />
 
 
+
 Add a public or private variable to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
     Public gdipImageList As New cGdipImageList
