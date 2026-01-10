@@ -6,7 +6,7 @@ PNGs will display correctly with transparency when rendered to a VB6 control usi
 Why is this ImageList useful?
 
 * It is a Dictionary-backed ImageList, using the scripting.dictionary object, a Windows component.
-* When using Cristian Buse's dictionary replacement, there is no scripting runtime dependency (recommended).
+* When using [Cristian Buse's dictionary replacement](https://github.com/cristianbuse/VBA-FastDictionary), there is no scripting runtime dependency (recommended).
 * It can store JPG, BMP, PNG files and other types too.
 * It can store images with alpha transparency as GDI+ provides this capability.
 * It can store images of varying size, not just small 16x16 or 32x32 icons as was the limit of the old VB6 imageList.
