@@ -20,10 +20,13 @@ Why is this ImageList useful?
 
 **Limitations?**
 
-* You can't currently use this imageList with RichClient as Olaf's code is designed specifically to work with his own imageList, eg. CC.RenderSurfaceContent.
+* You can't currently use this imageList as a full replacement for RichClient's image list as the rest of Olaf's code is designed specifically to work only with his own imageList, eg. CC.RenderSurfaceContent.
+  However, even in an RC project it is still useful for loading other non-RC image controls.
+  
 * VB6 still can't handle PNGs with alpha unless you use something like Elroy's standard picture Ex project or GDI+ render to a VB6 control.
-  Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency.
-  It should display perfectly using TwinBasic's native controls that have automatic PNG support built-in.
+  Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency. JPgs and BMPs are fine.
+
+  Note: It should load and display perfectly using TwinBasic's native controls that have automatic PNG support built-in.
 
 **Usage:**
 
