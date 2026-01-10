@@ -29,11 +29,11 @@ Usage:
 
 Add a public or private variable to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
-Public gdipImageList As New cGdipImageList
+**Public gdipImageList As New cGdipImageList**
 
 Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
 
-Public gGdipImageListInstanceCount As Long
+**Public gGdipImageListInstanceCount As Long**
 
 Properties/routines available:
 
