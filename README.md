@@ -37,11 +37,11 @@ Add a public variable to a module (BAS) to provide an instance counter for each 
 
 **Properties/routines available:**
 
-* To add an image to the image list:
+To add an image to the image list:
   
     gdipImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
   
-* To add an image to a standard VB6 image control
+To add an image to a standard VB6 image control
   
     Set imgAbout.Picture = gdipImageList.Picture("about-icon-dark")
   
