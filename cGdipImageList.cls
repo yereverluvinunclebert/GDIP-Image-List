@@ -333,13 +333,13 @@ Private Sub Class_Initialize()
 
     On Error GoTo Class_Initialize_Error
     
-    gGdipImageListInstanceCount = gGdipImageListInstanceCount + 1
-
     'Set mDict = CreateObject("Scripting.Dictionary")
     
     Set mDict = New Dictionary ' if you are using Cristian Buse's Dictionary replacement for the Scripting.Dictionary
     
-    Call initialiseGDIPStartup
+    If gGdipImageListInstanceCount = 0 Then Call initialiseGDIPStartup
+    
+    gGdipImageListInstanceCount = gGdipImageListInstanceCount + 1
     
     ' with image dimensions set to 0, the image's default dimensions will be extracted from the image itself
     mImageWidth = 0
