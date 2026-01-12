@@ -141,9 +141,9 @@ The concept came from my dock replacement, SteamyDock:
 
 ![hollerith0002](https://github.com/user-attachments/assets/f661e9c0-40ad-4c83-ad49-6a3de44077fd)
 
-In SteamyDock all the images are loaded at startup into two scripting.dictionaries, one for the large images and the other for the small images. They are then pulled from the dictionary as needed.
+In SteamyDock all the images are loaded at startup into two scripting.dictionaries, one for the large images and the other for the small images. The images being PNGs are then pulled from the dictionary as needed and rendered to screen using GDI+. Recently, the scripting.dictionary was replaced seamlessly with Cristian Buse's VBA dictionary replacement.
 
-The GDIPImageList is also used to place the Jpeg images on the top of the configuration form for all of my recent steampunk 'widgets'.
+The GDIPImageList is also used to place the Jpeg images on the top of the configuration form for all of my recent steampunk 'widgets/trinkets'.
 
 ![gdpImageList001](https://github.com/user-attachments/assets/48b95067-c772-40b7-81d0-ffc55f0bf32e)
 
