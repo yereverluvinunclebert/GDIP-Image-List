@@ -14,7 +14,7 @@ as TB can use its own collection.
 
 The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. 
 
-Click here for a full documentation describing the program structure: [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/yereverluvinunclebert/GDIP-Image-List)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/yereverluvinunclebert/GDIP-Image-List) Click here for a full documentation describing the program structure. 
 
 **Why is cGdipImageList useful?**
 
