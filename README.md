@@ -2,13 +2,18 @@
 
 **Purpose:**   
 
-A replacement of the RichClient imageList using scripting.dictionary and GDI+ to store and extract VB6 native type images.
-(JPG, BMP, PNG tested). Created to provide an imageList class that has potential for 64bit operation using TwinBasic. RichClient 5/6 are 32bit only
-and cannot compile to 64bit binaries using TwinBasic. This component removes a 32bit dependency in the Richclient imagelist for loading non-RC6 image controls.
+A replacement of the RichClient imageList using scripting.dictionary, GDI+ and/or a TwinBasic Collection to store and extract VB6 native type images, JPG, BMP 
+and non-native types such as PNGs. RichClient versions 5/6 are currently 32bit only and cannot compile to 64bit binaries using TwinBasic, so this component removes 
+a 32bit dependency for loading images to non-RC6 image controls.
 
-PNGs will display correctly with transparency when rendered to a VB6 control using GDI+.
+Two classes, one for VB6, the other for TwinBasic. 
 
-Why is this ImageList useful?
+The first, **cGdipImageList.cls** uses GDI+ to provide an imageList class that can be used in VB6. PNGs will display 
+correctly with transparency when rendered to a VB6 control using GDI+.
+
+The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. 
+
+Why is cGdipImageList useful?
 
 * It is quicker to pull pre-loaded images from the dictionary at runtime than pulling them when needed, directly from file using LoadPicture.
 * It can store JPG, BMP, PNG files and other types too.
@@ -22,20 +27,35 @@ Why is this ImageList useful?
 * Avoids runtime obsolescence.
 * Uses dependable GDI+ to load and unload the images.
 * If used with Elroy's standard picture Ex project it can parse and render alpha images (PNGs &c) directly to VB6 picture/imageboxes.
+* It is quicker to pull images from a collection in memory than directly from file using LoadPicture
+
+' Why is cTBImageList useful?
+
+* It will load and extract modern image types for display using TwinBasic's native controls, TB having automatic support built-in.
+* It can store JPG, BMP, PNG files and other types too.
+* It can store images with alpha transparency as TB provides this capability
+* It can store images of varying size, not just small 16x16 or 32x32 icons as per the old VB6 imageList.
+* It is a TB collection-backed ImageList with no scripting runtime dependency.
+* Avoids RichClient dependency.
+* Avoids GDI+ dependency so potentially platform-independent in TB's multiplatform future.
+* Avoids runtime obsolescence.
+* Uses RichClient-familiar syntax to load and unload the images for easy drop-in replacement.
+* It is quicker to pull images from TB's collection than a dictionary
+* It is certainly quicker to pull images from a collection than directly from file using LoadPicture
 
 **Limitations?**
 
-* You can't currently use this imageList as a full replacement for RichClient's image list as the rest of Olaf's code is designed specifically to work only with his own imageList, eg. CC.RenderSurfaceContent.
+* You can't currently use either of these imageLists as a **full** replacement for RichClient's image list as the rest of Olaf's code is designed specifically to work only with his own imageList, eg. CC.RenderSurfaceContent.
   However, even in an RC project it is still useful for loading other non-RC image controls.
   
 * VB6 still can't handle PNGs with alpha unless you use something like Elroy's standard picture Ex project or GDI+ render to a VB6 control.
   Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency. JPgs and BMPs are fine.
 
-  Note: It should load and display perfectly using TwinBasic's native controls that have automatic PNG support built-in.
 
 **Dependencies:**
 
-If using the scripting.dictionary, you will need to add a project reference to the MS scripting runtime scrrun.dll
+If using the cGdipImageList class you have the choice of utilising the scripting.dictionary, or Cristian Buse's Dictionary alternative. If you use the former,
+you will need to add a project reference to the MS scripting runtime scrrun.dll
 
 <img width="445" height="359" alt="image" src="https://github.com/user-attachments/assets/936f6161-8361-447a-8f32-cc0681ad3656" />
 
