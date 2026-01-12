@@ -65,7 +65,7 @@ you will need to add a project reference to the MS scripting runtime scrrun.dll
 
 Add a public or private variable to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
-    Public gdipImageList As New cGdipImageList
+    Public thisImageList As New cGdipImageList
 
 Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
 
@@ -93,39 +93,39 @@ and replace it with:
 
 To add an image to the image list:
   
-    gdipImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
+    thisImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
   
 To add an image to a standard VB6 image control
   
-    Set imgAbout.Picture = gdipImageList.Picture("about-icon-dark")
+    Set imgAbout.Picture = thisImageList.Picture("about-icon-dark")
   
 To remove an image from the imageList
   
-    gdipImageList.Remove "about-icon-dark"
+    thisImageList.Remove "about-icon-dark"
   
 To obtain a count of the images in the imageList
   
-    dictionaryCount = gdipImageList.count
+    dictionaryCount = thisImageList.count
   
 To check if an image is already loaded into the imageList
   
-    If gdipImageList.Exists(thiskey) Then ...
+    If thisImageList.Exists(thiskey) Then ...
   
-To set the imageWidth
+To set the imageWidth, (currently only functional in the cGdipImageList class)
   
-    gdipImageList.ImageWidth = 150  ' note: by default a value of 0, the image's real width will be used
+    thisImageList.ImageWidth = 150  ' note: by default a value of 0, the image's real width will be used
   
-To set the imageHeight
+To set the imageHeight, (currently only functional in the cGdipImageList class)
   
-    gdipImageList.ImageHeight  ditto
+    thisImageList.ImageHeight   ' note: by default a value of 0, the image's real width will be used
   
-To set the opacity of the image priror to loading
+To set the opacity of the image priror to loading, (currently only functional in the cGdipImageList class)
   
-    gdipImageList.ImageOpacity = 100  ' 0-100% - TwinBasic will handle the opacity, VB6 won't.
+    thisImageList.ImageOpacity = 100  ' 0-100% - TwinBasic will handle the opacity, VB6 won't.
   
 To clear the imageList
   
-    gdipImageList.Clear   
+    thisImageList.Clear   
 
 
 **Examples of Use:**
