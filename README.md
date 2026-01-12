@@ -130,7 +130,7 @@ To clear the imageList
   
     thisImageList.Clear   
 
-https://deepwiki.com/yereverluvinunclebert/GDIP-Image-List
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/yereverluvinunclebert/GDIP-Image-List)
 
 
 **Examples of Use:**
