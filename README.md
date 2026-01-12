@@ -9,7 +9,8 @@ a 32bit dependency for loading images to non-RC6 image controls.
 Two classes, one for VB6, the other for TwinBasic. 
 
 The first, **cGdipImageList.cls** uses GDI+ to provide an imageList class that can be used in VB6. PNGs will display 
-correctly with transparency when rendered to a VB6 control using GDI+.
+correctly with transparency when rendered to a VB6 control using GDI+. It will also work with TwinBasic but it is not required 
+as TB can use its own collection.
 
 The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. 
 
@@ -28,7 +29,7 @@ Why is cGdipImageList useful?
 * Uses dependable GDI+ to load and unload the images.
 * If used with Elroy's standard picture Ex project it can parse and render alpha images (PNGs &c) directly to VB6 picture/imageboxes.
 
-' Why is cTBImageList useful?
+Why is cTBImageList useful?
 
 * It is quicker to pull images from a collection in memory than directly from file using LoadPicture
 * It will load and extract modern image types for display using TwinBasic's native controls, TB having automatic support built-in.
@@ -41,7 +42,6 @@ Why is cGdipImageList useful?
 * Avoids runtime obsolescence.
 * Uses RichClient-familiar syntax to load and unload the images for easy drop-in replacement.
 * It is quicker to pull images from TB's collection than a dictionary
-
 
 **Limitations?**
 
