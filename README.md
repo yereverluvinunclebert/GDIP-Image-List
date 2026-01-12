@@ -130,6 +130,8 @@ To clear the imageList
   
     thisImageList.Clear   
 
+https://deepwiki.com/yereverluvinunclebert/GDIP-Image-List
+
 
 **Examples of Use:**
 
