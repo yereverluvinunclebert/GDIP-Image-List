@@ -42,20 +42,20 @@ Attribute VB_Exposed = False
 '             Usage:
 '
 '             Add a public or private variable to a module (BAS) in order to create a new GDI+ image list instance.
-'             Public gdipImageList As New cGdipImageList
+'             Public thisImageList As New cGdipImageList
 '
 '             Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
 '             Public gGdipImageListInstanceCount As Long
 '
-'             gdipImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
-'             Set imgAbout.Picture = gdipImageList.Picture("about-icon-dark")
-'             gdipImageList.Remove "about-icon-dark"
-'             dictionaryCount = gdipImageList.count
-'             If gdipImageList.Exists(thiskey) Then ...
-'             gdipImageList.ImageWidth = 150 ' sets the imageWidth, a value of zero causes the image's real width to be used
-'             gdipImageList.ImageHeight ' ditto
-'             gdipImageList.ImageOpacity = 100 ' 0-100% prior to loading will set the opacity
-'             gdipImageList.Clear  ' clears the imageList
+'             thisImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
+'             Set imgAbout.Picture = thisImageList.Picture("about-icon-dark")
+'             thisImageList.Remove "about-icon-dark"
+'             dictionaryCount = thisImageList.count
+'             If thisImageList.Exists(thiskey) Then ...
+'             thisImageList.ImageWidth = 150 ' sets the imageWidth, a value of zero causes the image's real width to be used
+'             thisImageList.ImageHeight ' ditto
+'             thisImageList.ImageOpacity = 100 ' 0-100% prior to loading will set the opacity
+'             thisImageList.Clear  ' clears the imageList
 '
 '---------------------------------------------------------------------------------------
 
@@ -306,13 +306,13 @@ Private Type JustMyUDT
     dict As Dictionary
 End Type
 
-#Const x64StackIssues = ((Mac = 0) And Win64 And (TwinBASIC = 0))
+#Const x64StackIssues = ((Mac = 0) And Win64 And (twinbasic = 0))
 
-'#If twinbasic Then
-    'Private mDict As Collection ' std TB collection
-'#Else
+#If twinbasic Then
+    Private mDict As Collection ' std TB collection
+#Else
     Private mDict As Dictionary ' scripting.dictionary
-'#End If
+#End If
 '-----------------------------------------------------------
 ' Declarations for the scripting.dictionary replacements END
 '-----------------------------------------------------------
@@ -536,10 +536,10 @@ End Property
 ' Purpose   : Test to see if the item exists in the dictionary
 '---------------------------------------------------------------------------------------
 '
-Public Function Exists(ByVal Key As String) As Boolean
+Public Function Exists(ByVal key As String) As Boolean
     On Error GoTo Exists_Error
 
-    Exists = mDict.Exists(Key)
+    Exists = mDict.Exists(key)
 
     On Error GoTo 0
     Exit Function
@@ -558,13 +558,13 @@ End Function
 '             Must be destroyed with GdipDisposeImage
 '---------------------------------------------------------------------------------------
 '
-Public Sub Remove(ByVal Key As String)
+Public Sub Remove(ByVal key As String)
     On Error GoTo Remove_Error
 
-    If mDict.Exists(Key) Then
+    If mDict.Exists(key) Then
         ' GDI+ delete
-        GdipDisposeImage mDict(Key) 'NOT DeleteObject mDict(Key)
-        mDict.Remove Key
+        GdipDisposeImage mDict(key) 'NOT DeleteObject mDict(Key)
+        mDict.Remove key
     End If
 
     On Error GoTo 0
@@ -610,11 +610,11 @@ End Sub
 ' Returns   : GpBitmap (NOT HBITMAP)
 '---------------------------------------------------------------------------------------
 '
-Public Function GetImage(ByVal Key As String) As Long
+Public Function GetImage(ByVal key As String) As Long
     On Error GoTo GetImage_Error
 
-    If Not mDict.Exists(Key) Then Err.Raise 5, , "Image key not found"
-    GetImage = mDict(Key)
+    If Not mDict.Exists(key) Then Err.Raise 5, , "Image key not found"
+    GetImage = mDict(key)
 
     On Error GoTo 0
     Exit Function
@@ -631,14 +631,14 @@ End Function
 ' Purpose   : Adds an image to the dictionary
 '---------------------------------------------------------------------------------------
 '
-Public Sub AddImage(ByVal Key As String, ByVal FilePath As String)
+Public Sub AddImage(ByVal key As String, ByVal FilePath As String)
 
     On Error GoTo AddImage_Error
 
-    If mDict.Exists(Key) Then Err.Raise 457, , "Key already exists"
+    If mDict.Exists(key) Then Err.Raise 457, , "Key already exists"
     
     If fFExists(FilePath) Then
-        resizeAndLoadImgToDict mDict, Key, FilePath, mImageWidth, mImageHeight, , mImageOpacity
+        resizeAndLoadImgToDict mDict, key, FilePath, mImageWidth, mImageHeight, , mImageOpacity
     Else
         MsgBox " File not found " & FilePath
     End If
@@ -658,14 +658,14 @@ End Sub
 ' Purpose   : extracts the image from the dictionary using similar syntax to Rich Client
 '---------------------------------------------------------------------------------------
 '
-Public Function Picture(ByVal Key As String) As StdPicture
+Public Function Picture(ByVal key As String) As StdPicture
     Dim gpImage As Long: gpImage = 0
     
     On Error GoTo Picture_Error
 
-    If Not mDict.Exists(Key) Then Err.Raise 5, , "Image key not found"
+    If Not mDict.Exists(key) Then Err.Raise 5, , "Image key not found"
     
-    gpImage = GetImage(Key)
+    gpImage = GetImage(key)
     Set Picture = fBmpToStdPicture(gpImage, mImageWidth, mImageHeight)
 
     On Error GoTo 0
@@ -1079,7 +1079,7 @@ End Function
 '             Finally, uses a function GdipCreateBitmapFromScan0 to both create and resize the image.
 '---------------------------------------------------------------------------------------
 '
-Private Sub resizeAndLoadImgToDict(ByRef thisDictionary As Object, ByVal Key As String, ByVal strFilename As String, ByVal Width As Long, ByVal height As Long, Optional ByVal fullStringKey As String = "", Optional ByVal ImageOpacity As Integer)
+Private Sub resizeAndLoadImgToDict(ByRef thisDictionary As Object, ByVal key As String, ByVal strFilename As String, ByVal Width As Long, ByVal height As Long, Optional ByVal fullStringKey As String = "", Optional ByVal ImageOpacity As Integer)
 
     Dim thiskey As String: thiskey = 0
     Dim encoderCLSID As CLSID
@@ -1118,7 +1118,7 @@ Private Sub resizeAndLoadImgToDict(ByRef thisDictionary As Object, ByVal Key As 
     'override any key
     If fullStringKey = "" Then
         ' create a unique key string
-        thiskey = Key
+        thiskey = key
     Else
         thiskey = fullStringKey
     End If
