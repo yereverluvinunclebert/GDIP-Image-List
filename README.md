@@ -14,7 +14,7 @@ as TB can use its own collection.
 
 The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. 
 
-Why is cGdipImageList useful?
+**Why is cGdipImageList useful?**
 
 * It is quicker to pull images from a collection in memory than directly from file using LoadPicture
 * It can store JPG, BMP, PNG files and other types too.
@@ -29,7 +29,7 @@ Why is cGdipImageList useful?
 * Uses dependable GDI+ to load and unload the images.
 * If used with Elroy's standard picture Ex project it can parse and render alpha images (PNGs &c) directly to VB6 picture/imageboxes.
 
-Why is cTBImageList useful?
+**Why is cTBImageList useful?**
 
 * It is quicker to pull images from a collection in memory than directly from file using LoadPicture
 * It will load and extract modern image types for display using TwinBasic's native controls, TB having automatic support built-in.
