@@ -72,7 +72,9 @@ Pull both classes into your existing project.
 
 Add a public or private variable as required to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
-    Public thisImageList As New cGdipImageList
+    Public thisImageList As New cGdipImageList ' for VB6
+    
+    Public thisImageList As New cTBImageList ' for TwinBasic
 
 Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
 
