@@ -99,14 +99,17 @@ and replace it with:
 To add an image to the image list:
   
     thisImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
+    thisImageList.AddImage key, filename
   
 To add an image to a standard VB6 image control
   
     Set imgAbout.Picture = thisImageList.Picture("about-icon-dark")
+    set pic.Picture = thisImageList.Picture(key)
   
 To remove an image from the imageList
   
     thisImageList.Remove "about-icon-dark"
+    thisImageList.Remove key
   
 To obtain a count of the images in the imageList
   
@@ -114,7 +117,7 @@ To obtain a count of the images in the imageList
   
 To check if an image is already loaded into the imageList
   
-    If thisImageList.Exists(thiskey) Then ...
+    If thisImageList.Exists(key) Then ...
   
 To set the imageWidth, (currently only functional in the cGdipImageList class, in the TBImageList, I am experimenting with non-GDI+ Cairo to achieve this)
   
