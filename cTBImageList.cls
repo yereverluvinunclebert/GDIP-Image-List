@@ -67,15 +67,11 @@ Attribute VB_Exposed = False
 
 Option Explicit
 
-'-----------------------------------------------------------
-' Declarations for the TB Collection replacement START
-'-----------------------------------------------------------
+Private mCol As Collection ' a standard VB6/TB-style internal collection to enable external enumeration ie. For Each img In TBImageList
 
-Private mDict As Collection ' std TB collection
+' Declarations for the standard TB Collection replacement
 
-'-----------------------------------------------------------
-' Declarations for the TB Collection replacements END
-'-----------------------------------------------------------
+Private mDict As Collection
 
 ' member property variables
 Private mImageWidth As Long
@@ -132,6 +128,25 @@ Class_Terminate_Error:
      MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Class_Terminate of Class Module cTBImageList"
 End Sub
 
+'---------------------------------------------------------------------------------------
+' Procedure : NewEnum
+' Author    : beededea
+' Date      : 14/01/2026
+' Purpose   : A standard VB6/TB-style internal collection is used to enable external enumeration ie. For Each img In gdipImageList
+'---------------------------------------------------------------------------------------
+'
+Public Property Get NewEnum() As IUnknown
+    On Error GoTo NewEnum_Error
+
+    Set NewEnum = mCol.[_NewEnum]
+
+    On Error GoTo 0
+    Exit Property
+
+NewEnum_Error:
+
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure NewEnum of Class Module cGdipImageList"
+End Property
 
 '---------------------------------------------------------------------------------------
 ' Procedure : Count
@@ -158,7 +173,7 @@ End Property
 ' Procedure : ImageWidth
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : not yet implemented
+' Purpose   : not yet implemented, experimenting with Cairo to achieve this
 '---------------------------------------------------------------------------------------
 '
 Public Property Get ImageWidth() As Long
@@ -177,7 +192,7 @@ End Property
 ' Procedure : ImageWidth
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : not yet implemented
+' Purpose   : not yet implemented, experimenting with Cairo to achieve this
 '---------------------------------------------------------------------------------------
 '
 Public Property Let ImageWidth(ByVal newValue As Long)
@@ -198,7 +213,7 @@ End Property
 ' Procedure : ImageHeight
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : not yet implemented
+' Purpose   : not yet implemented, experimenting with Cairo to achieve this
 '---------------------------------------------------------------------------------------
 '
 Public Property Get ImageHeight() As Long
@@ -218,7 +233,7 @@ End Property
 ' Procedure : ImageHeight
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : not yet implemented
+' Purpose   : not yet implemented, experimenting with Cairo to achieve this
 '---------------------------------------------------------------------------------------
 '
 Public Property Let ImageHeight(ByVal newValue As Long)
@@ -239,7 +254,7 @@ End Property
 ' Procedure : ImageOpacity
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : image Opacity is not yet implemented
+' Purpose   : image Opacity is not yet implemented, experimenting with Cairo to achieve this
 '---------------------------------------------------------------------------------------
 '
 Public Property Get ImageOpacity() As Integer
@@ -259,7 +274,7 @@ End Property
 ' Procedure : ImageOpacity
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : image Opacity is not yet implemented
+' Purpose   : image Opacity is not yet implemented, experimenting with Cairo to achieve this
 '---------------------------------------------------------------------------------------
 '
 Public Property Let ImageOpacity(ByVal newValue As Integer)
@@ -360,6 +375,7 @@ Public Sub AddImage(ByVal key As String, ByVal FilePath As String)
 
     If mDict.Exists(key) Then Err.Raise 457, , "Key already exists"
     
+    ' fFexists is a sub that tests for file existence
     If fFExists(FilePath) Then
         ' add the image to the dictionary collection
         Set pic = LoadPicture(FilePath)

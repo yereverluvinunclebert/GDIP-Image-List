@@ -296,11 +296,13 @@ End Enum
 Private lngGDI As Long
 Private gdipInit As GDIPLUS_STARTINPUT
 
-'Private mDict As Object ' You will need a project reference to the Scripting.Dictionary
+Private mCol As Collection ' a standard VB6/TB-style internal collection to enable external enumeration ie. For Each img In gdipImageList
+    
+'Private mDict As Object ' You will need a project reference to the Scripting.Dictionary if you are using it
 
-'-----------------------------------------------------------
-' Declarations for the scripting.dictionary replacement START
-'-----------------------------------------------------------
+'------------------------------------------------------------------------
+' Declarations for Cristian Buse's scripting.dictionary replacement START
+'------------------------------------------------------------------------
 
 Private Type JustMyUDT
     dict As Dictionary
@@ -333,7 +335,7 @@ Private Sub Class_Initialize()
 
     On Error GoTo Class_Initialize_Error
     
-    'Set mDict = CreateObject("Scripting.Dictionary")
+    'Set mDict = CreateObject("Scripting.Dictionary") ' if you are using the Scripting.Dictionary
     
     Set mDict = New Dictionary ' if you are using Cristian Buse's Dictionary replacement for the Scripting.Dictionary
     
@@ -384,6 +386,25 @@ Class_Terminate_Error:
      MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Class_Terminate of Class Module cGdipImageList"
 End Sub
 
+'---------------------------------------------------------------------------------------
+' Procedure : NewEnum
+' Author    : beededea
+' Date      : 14/01/2026
+' Purpose   : A standard VB6/TB-style internal collection is used to enable external enumeration ie. For Each img In gdipImageList
+'---------------------------------------------------------------------------------------
+'
+Public Property Get NewEnum() As IUnknown
+    On Error GoTo NewEnum_Error
+
+    Set NewEnum = mCol.[_NewEnum]
+
+    On Error GoTo 0
+    Exit Property
+
+NewEnum_Error:
+
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure NewEnum of Class Module cGdipImageList"
+End Property
 
 '---------------------------------------------------------------------------------------
 ' Procedure : Count
