@@ -50,7 +50,7 @@ The second, **cTBImageList.cls**, uses a TB collection and thus has potential fo
 **Limitations?**
 
 * You can't currently use either of these imageLists as a **full** replacement for RichClient's image list as the rest of Olaf's code is designed specifically to work only with his OWN imageList, eg. CC.RenderSurfaceContent.
-  However, even in an RC project it is still useful for loading other non-RichClient image controls.
+  However, even in an RC project it is still useful for loading other non-RichClient image controls. I am working on creating my own non-RC image widgets using GDI+ and/or Cairo and if I manage this, the imageLists will support these types.
   
 * VB6 still can't handle PNGs with alpha unless you use something like Elroy's standard picture Ex project or GDI+ render to a VB6 control.
   Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency. JPgs and BMPs are fine.
