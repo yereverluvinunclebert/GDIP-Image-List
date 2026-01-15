@@ -68,7 +68,9 @@ If you use the latter, there are no external dependencies. If you use TwinBasic 
 
 **Usage:**
 
-Add a public or private variable to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
+Pull both classes into your existing project.
+
+Add a public or private variable as required to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
 
     Public thisImageList As New cGdipImageList
 
@@ -88,7 +90,7 @@ and replace it with:
 
 In Class_Initialize, then comment out this line:
 
-    'Set mDict = CreateObject("Scripting.Dictionary")
+    Set mDict = CreateObject("Scripting.Dictionary")
     
 and replace it with:
 
