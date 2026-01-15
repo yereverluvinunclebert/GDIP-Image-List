@@ -123,11 +123,11 @@ To set the imageWidth, (currently only functional in the cGdipImageList class, i
   
     thisImageList.ImageWidth = 150  ' note: by default a value of 0, the image's real width will be used
   
-To set the imageHeight, (non functional as per the imageWidth)
+To set the imageHeight, (in the TBImageList, non functional as per the imageWidth)
   
     thisImageList.ImageHeight   ' note: by default a value of 0, the image's real width will be used
   
-To set the opacity of the image priror to loading, (non functional as per the imageWidth):
+To set the opacity of the image priror to loading, (in the TBImageList, non functional as per the imageWidth):
   
     thisImageList.ImageOpacity = 100  ' 0-100% - TwinBasic will handle the opacity, VB6 won't.
   
