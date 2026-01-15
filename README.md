@@ -64,7 +64,7 @@ you will need to add a project reference to the MS scripting runtime scrrun.dll.
 
 <img width="445" height="359" alt="image" src="https://github.com/user-attachments/assets/936f6161-8361-447a-8f32-cc0681ad3656" />
 
-If you use the latter, there are no external dependencies.
+If you use the latter, there are no external dependencies. If you use TwinBasic there are no external dependencies.
 
 **Usage:**
 
