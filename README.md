@@ -7,7 +7,7 @@ and non-native types such as PNGs. Basically, a wrapper around two dictionaries 
 
 Why? RichClient versions 5/6 are currently 32bit only and cannot compile to 64bit binaries using TwinBasic, so this component removes 
 a 32bit dependency for loading images to non-RC6 image controls. If you want to convert a Richclient program that uses RC collections then this imagelist class is 
-a partial drop-in replacement. I use it in my programs to load JPGs quickly from memory.
+a partial drop-in replacement. I use it in my programs to load JPGs quickly from memory. Scroll to the end to see examples.
 
 Two classes, one for VB6, the other for TwinBasic. If you include both in your program, the appropriate class will be called by the chosen environment. 
 
