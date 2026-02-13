@@ -3,8 +3,11 @@
 **Purpose:**   
 
 A replacement of the RichClient imageList using scripting.dictionary, GDI+ and/or a TwinBasic Collection to store and extract VB6 native type images, JPG, BMP 
-and non-native types such as PNGs. RichClient versions 5/6 are currently 32bit only and cannot compile to 64bit binaries using TwinBasic, so this component removes 
-a 32bit dependency for loading images to non-RC6 image controls.
+and non-native types such as PNGs. Basically, a wrapper around two dictionaries to provide the functionality of - and compatibility with - a RichClient collection.
+
+Why? RichClient versions 5/6 are currently 32bit only and cannot compile to 64bit binaries using TwinBasic, so this component removes 
+a 32bit dependency for loading images to non-RC6 image controls. If you want to convert a Richclient program that uses RC collections then this imagelist class is 
+a partial drop-in replacement. I use it in my programs to load JPGs quickly from memory.
 
 Two classes, one for VB6, the other for TwinBasic. If you include both in your program, the appropriate class will be called by the chosen environment. 
 
@@ -53,18 +56,19 @@ The second, **cTBImageList.cls**, uses a TB collection and thus has potential fo
   However, even in an RC project it is still useful for loading other non-RichClient image controls. I am working on creating my own non-RC image widgets using GDI+ and/or Cairo and if I manage this, the imageLists will support these types.
   
 * VB6 still can't handle PNGs with alpha unless you use something like Elroy's standard picture Ex project or GDI+ render to a VB6 control.
-  Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency. JPgs and BMPs are fine.
+  Alpha PNGs will display with a black background on any standard VB6 control as VB6 does not support transparency. JPGs and BMPs are fine.
+  
   TwinBasic version has no such limitations using either class.
 
 
 **Dependencies:**
 
 If using the cGdipImageList class you have the choice of utilising the scripting.dictionary, or Cristian Buse's Dictionary alternative. If you use the former,
-you will need to add a project reference to the MS scripting runtime scrrun.dll. 
+you will need to add a project reference to the MS scripting runtime scrrun.dll. The latter has no external dependency.
 
 <img width="445" height="359" alt="image" src="https://github.com/user-attachments/assets/936f6161-8361-447a-8f32-cc0681ad3656" />
 
-If you use the latter, there are no external dependencies. If you use TwinBasic there are no external dependencies.
+If you use TwinBasic there are no external dependencies.
 
 **Usage:**
 
