@@ -10,7 +10,7 @@ Two classes, one for VB6, the other for TwinBasic. If you include both in your p
 
 The first, **cGdipImageList.cls** uses GDI+ to provide an imageList class that can be used in VB6. PNGs will display 
 correctly with transparency when rendered to a VB6 control using GDI+. It will also work with TwinBasic but it is not required 
-as TB can use its own collection.
+as TB can use its own collection. Has potential for 64bit compilation using TwinBasic. 
 
 The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. 
 
