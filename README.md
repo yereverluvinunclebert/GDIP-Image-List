@@ -3,7 +3,7 @@
 **Purpose:**   
 
 A replacement of the RichClient imageList using scripting.dictionary, GDI+ and/or a TwinBasic Collection to store and extract VB6 native type images, JPG, BMP 
-and non-native types such as PNGs. Basically, a wrapper around two dictionaries to provide the functionality of - and compatibility with - a RichClient collection.
+and non-native types such as PNGs. Basically, a wrapper around two dictionaries to provide the functionality of (and compatibility with) a RichClient collection.
 
 Why? RichClient versions 5/6 are currently 32bit only and cannot compile to 64bit binaries using TwinBasic, so this component removes 
 a 32bit dependency for loading images to non-RC6 image controls. If you want to convert a Richclient program that uses RC collections then this imagelist class is 
