@@ -112,7 +112,7 @@ To add an image to the image list:
     thisImageList.AddImage "about-icon-dark", App.Path & "\Resources\images\about-icon-dark-1010.jpg"
     thisImageList.AddImage key, filename
   
-To add an image to a standard VB6 image control
+To add an image to a standard VB6 picture control
   
     Set imgAbout.Picture = thisImageList.Picture("about-icon-dark")
     set pic.Picture = thisImageList.Picture(key)
