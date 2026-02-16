@@ -15,7 +15,9 @@ The first, **cGdipImageList.cls** uses GDI+ to provide an imageList class that c
 correctly with transparency when rendered to a VB6 control using GDI+. It will also work with TwinBasic but it is not required 
 as TB can use its own collection. Has potential for 64bit compilation using TwinBasic. 
 
-The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. 
+The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. It also uses GDI+ but only when resizing.
+
+A single module is provided, **mImageList.bas** which contains the GDI+ API declarations, functions and subroutines.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/yereverluvinunclebert/GDIP-Image-List) Click here for a full documentation describing the program structure. 
 
@@ -83,10 +85,6 @@ Add a public or private variable as required to a module (BAS) in order to insta
         ' new GDI+ image list instance
         Public thisImageList As New cGdipImageList
     #End If
-
-Add a public variable to a module (BAS) to provide an instance counter for each usage of the class.
-
-    Public gGdipImageListInstanceCount As Long
 
 if you are using Cristian Buse's Dictionary replacement for the Scripting.Dictionary     
 
