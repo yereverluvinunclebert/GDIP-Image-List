@@ -131,11 +131,11 @@ To check if an image is already loaded into the imageList
   
 To set the imageWidth, (currently only functional in the cGdipImageList class, in the TBImageList, I am experimenting with non-GDI+ Cairo to achieve this)
   
-    thisImageList.ImageWidth = 150  ' note: by default a value of 0, the image's real width will be used
+    thisImageList.ImageWidth = 150  ' width in pixels not twips. Note: by default a value of 0, the image's real width will be used
   
 To set the imageHeight, (in the TBImageList, non functional as per the imageWidth)
   
-    thisImageList.ImageHeight   ' note: by default a value of 0, the image's real width will be used
+    thisImageList.ImageHeight   ' height in pixels not twips. Note: by default a value of 0, the image's real width will be used
   
 To set the opacity of the image priror to loading, (in the TBImageList, non functional as per the imageWidth):
   
