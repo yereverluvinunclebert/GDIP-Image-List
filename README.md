@@ -15,7 +15,7 @@ The first, **cGdipImageList.cls** uses GDI+ to provide an imageList class that c
 correctly with transparency when rendered to a VB6 control using GDI+. It will also work with TwinBasic but it is not required 
 as TB can use its own collection. Has potential for 64bit compilation using TwinBasic. 
 
-The second, **cTBImageList.cls**, uses a TB collection and thus has potential for 64bit compilation using TwinBasic. It also uses GDI+ but only when resizing.
+The second, **cTBImageList.cls**, uses a TB collection to store native images and thus has potential for 64bit compilation using TwinBasic. It also uses GDI+ but only when resizing.
 
 A single module is provided, **mImageList.bas** which contains the GDI+ API declarations, functions and subroutines.
 
