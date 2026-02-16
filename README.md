@@ -77,7 +77,7 @@ If you use TwinBasic there are no external dependencies.
 
 Pull both classes into your existing project.
 
-Add a public or private variable as required to a module (BAS) in order to instantiate/create a new GDI+ image list instance.
+Add a public or private variable as required to a module (**mImageList.bas**) in order to instantiate/create a new GDI+ image list instance.
 
     #If twinbasic Then
         ' Wrapper around TwinBasic's collection
