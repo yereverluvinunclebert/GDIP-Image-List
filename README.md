@@ -130,15 +130,15 @@ To check if an image is already loaded into the imageList
   
     If thisImageList.Exists(key) Then ...
   
-To set the imageWidth, (currently only functional in the cGdipImageList class, in the TBImageList, I am experimenting with non-GDI+ Cairo to achieve this)
+To set the imageWidth, (width in pixels not twips. Note: by default a value of 0, the image's real width will be used)
   
-    thisImageList.ImageWidth = 150  ' width in pixels not twips. Note: by default a value of 0, the image's real width will be used
+    thisImageList.ImageWidth = 150  ' 
   
-To set the imageHeight, (in the TBImageList, non functional as per the imageWidth)
+To set the imageHeight, (height in pixels not twips. Note: by default a value of 0, the image's real width will be used)
   
-    thisImageList.ImageHeight   ' height in pixels not twips. Note: by default a value of 0, the image's real width will be used
+    thisImageList.ImageHeight = 150  '  
   
-To set the opacity of the image priror to loading, (in the TBImageList, non functional as per the imageWidth):
+To set the opacity of the image priror to loading, (in the TBImageList, not yet functional):
   
     thisImageList.ImageOpacity = 100  ' 0-100% - TwinBasic will handle the opacity, VB6 won't.
   
