@@ -145,7 +145,7 @@ Public Property Get NewEnum() As IUnknown
 
 NewEnum_Error:
 
-     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure NewEnum of Class Module cGdipImageList"
+     MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure NewEnum of Class Module cTBImageList"
 End Property
 
 '---------------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ End Property
 ' Procedure : ImageWidth
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : not yet implemented, experimenting with Cairo to achieve this
+' Purpose   : set the ImageHeight in pixels (not twips)
 '---------------------------------------------------------------------------------------
 '
 Public Property Get ImageWidth() As Long
@@ -213,7 +213,7 @@ End Property
 ' Procedure : ImageHeight
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : not yet implemented, experimenting with Cairo to achieve this
+' Purpose   : get the ImageHeight in pixels (not twips)
 '---------------------------------------------------------------------------------------
 '
 Public Property Get ImageHeight() As Long
@@ -233,7 +233,7 @@ End Property
 ' Procedure : ImageHeight
 ' Author    : beededea
 ' Date      : 05/09/2025
-' Purpose   : not yet implemented, experimenting with Cairo to achieve this
+' Purpose   : set the ImageHeight in pixels (not twips)
 '---------------------------------------------------------------------------------------
 '
 Public Property Let ImageHeight(ByVal newValue As Long)
@@ -369,21 +369,43 @@ End Sub
 '
 Public Sub AddImage(ByVal key As String, ByVal FilePath As String)
 
+    Dim gdipBitmap As Long: gdipBitmap = 0
     Dim pic As StdPicture
 
     On Error GoTo AddImage_Error
 
     If mDict.Exists(key) Then Err.Raise 457, , "Key already exists"
     
-    ' fFexists is a sub that tests for file existence
-    If fFExists(FilePath) Then
-        ' add the image to the dictionary collection
-        Set pic = LoadPicture(FilePath)
-        mDict.Add pic, key ' image followed by Key for a TB collection
-    Else
+    If fFExists(FilePath) = False Then
         MsgBox " File not found " & FilePath
+        Exit Sub
     End If
+    
+    ' if the image width or height is non zero then we need to set the size manually (rescale)
+    ' in VB6, typically we would use .PaintPicture method but that only works with bitmaps, so is useless here
+    ' Instead, we have to use GDI+ to resize the image as that is what we know.
+    
+    If mImageWidth <> 0 Or mImageHeight <> 0 Then ' resize required
+    
+        ' read the file as a series of bytes and create a scaled GDI+ bitmap of the image surface using GdipCreateBitmapFromScan0 and context quality attributes, resizing as we go
+        gdipBitmap = loadResizeGDIPImage(mDict, key, FilePath, mImageWidth, mImageHeight, , mImageOpacity)
+                
+        ' convert the Bitmap to a standard picture
+        Set pic = fBmpToStdPicture(gdipBitmap, mImageWidth, mImageHeight)
+        
+        ' add the image to the dictionary collection
+        mDict.Add pic, key ' image followed by Key for a TB collection
+    
+    Else
+        ' set the standard picture object to load from a file on disc
+        Set pic = LoadPicture(FilePath)
+        
+        ' add the image to the dictionary collection
+        mDict.Add pic, key ' image followed by Key for a TB collection
+    End If
+    
 
+    
     On Error GoTo 0
     Exit Sub
 
@@ -414,6 +436,7 @@ Picture_Error:
 
      MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Picture of Class Module cTBImageList"
 End Function
+
 
 
 
