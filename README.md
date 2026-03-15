@@ -116,7 +116,12 @@ To add an image to a standard VB6 picture control
   
     Set imgAbout.Picture = thisImageList.Picture("about-icon-dark")
     set pic.Picture = thisImageList.Picture(key)
-  
+
+To extract an unmodified bitmap 
+
+    dim iconBitmap as long
+    iconBitmap = thisImageList.Bitmap(key)
+    
 To remove an image from the imageList
   
     thisImageList.Remove "about-icon-dark"
