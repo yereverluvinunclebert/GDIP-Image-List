@@ -7,6 +7,7 @@ Module=mGDIPImageList; mImageList.bas
 Startup="Sub Main"
 HelpFile=""
 ExeName32="Project1.exe"
+Path32="C:\Users\beededea\Desktop"
 Command32=""
 Name="Project1"
 HelpContextID="0"

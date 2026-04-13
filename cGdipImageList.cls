@@ -164,7 +164,7 @@ End Sub
 ' Procedure : NewEnum
 ' Author    : beededea
 ' Date      : 14/01/2026
-' Purpose   : A standard VB6/TB-style internal collection is used to enable external enumeration ie. For Each img In gdipImageList
+' Purpose   : A standard VB6/TB-style internal collection is used to allow external enumeration ie. For Each img In gdipImageList
 '---------------------------------------------------------------------------------------
 '
 Public Property Get NewEnum() As IUnknown
@@ -331,10 +331,10 @@ End Property
 ' Purpose   : Test to see if the item exists in the dictionary
 '---------------------------------------------------------------------------------------
 '
-Public Function Exists(ByVal Key As String) As Boolean
+Public Function Exists(ByVal key As String) As Boolean
     On Error GoTo Exists_Error
 
-    Exists = mDict.Exists(Key)
+    Exists = mDict.Exists(key)
 
     On Error GoTo 0
     Exit Function
@@ -353,13 +353,13 @@ End Function
 '             Must be destroyed with GdipDisposeImage
 '---------------------------------------------------------------------------------------
 '
-Public Sub Remove(ByVal Key As String)
+Public Sub Remove(ByVal key As String)
     On Error GoTo Remove_Error
 
-    If mDict.Exists(Key) Then
+    If mDict.Exists(key) Then
         ' GDI+ delete
-        GdipDisposeImage mDict(Key) 'NOT DeleteObject mDict(Key)
-        mDict.Remove Key
+        GdipDisposeImage mDict(key) 'NOT DeleteObject mDict(Key)
+        mDict.Remove key
     End If
 
     On Error GoTo 0
@@ -405,11 +405,11 @@ End Sub
 ' Returns   : GpBitmap (NOT HBITMAP)
 '---------------------------------------------------------------------------------------
 '
-Public Function GetImage(ByVal Key As String) As Long
+Public Function GetImage(ByVal key As String) As Long
     On Error GoTo GetImage_Error
 
-    If Not mDict.Exists(Key) Then Err.Raise 5, , "Image key not found"
-    GetImage = mDict(Key)
+    If Not mDict.Exists(key) Then Err.Raise 5, , "Image key not found"
+    GetImage = mDict(key)
 
     On Error GoTo 0
     Exit Function
@@ -426,14 +426,14 @@ End Function
 ' Purpose   : Adds an image to the dictionary
 '---------------------------------------------------------------------------------------
 '
-Public Sub AddImage(ByVal Key As String, ByVal FilePath As String)
+Public Sub AddImage(ByVal key As String, ByVal FilePath As String)
 
     On Error GoTo AddImage_Error
 
-    If mDict.Exists(Key) Then Err.Raise 457, , "Key already exists"
+    If mDict.Exists(key) Then Err.Raise 457, , "Key already exists"
     
     If fFExists(FilePath) Then
-        resizeAndLoadImgToDict mDict, Key, FilePath, mImageWidth, mImageHeight, , mImageOpacity
+        resizeAndLoadImgToDict mDict, key, FilePath, mImageWidth, mImageHeight, , mImageOpacity
     Else
         MsgBox " File not found " & FilePath
     End If
@@ -453,14 +453,14 @@ End Sub
 ' Purpose   : extracts a standard picture image from the dictionary using similar syntax to Rich Client
 '---------------------------------------------------------------------------------------
 '
-Public Function Picture(ByVal Key As String) As StdPicture
+Public Function Picture(ByVal key As String) As StdPicture
     Dim gpImage As Long: gpImage = 0
     
     On Error GoTo Picture_Error
 
-    If Not mDict.Exists(Key) Then Err.Raise 5, , "Image key not found"
+    If Not mDict.Exists(key) Then Err.Raise 5, , "Image key not found"
     
-    gpImage = GetImage(Key)
+    gpImage = GetImage(key)
     Set Picture = fBmpToStdPicture(gpImage, mImageWidth, mImageHeight)
 
     On Error GoTo 0
@@ -479,14 +479,14 @@ End Function
 ' Purpose   : extracts an unmodified bitmap from the dictionary using new syntax
 '---------------------------------------------------------------------------------------
 '
-Public Function Bitmap(ByVal Key As String) As Long
+Public Function bitmap(ByVal key As String) As Long
     Dim gpImage As Long: gpImage = 0
     
     On Error GoTo Picture_Error
 
-    If Not mDict.Exists(Key) Then Err.Raise 5, , "Image key not found"
+    If Not mDict.Exists(key) Then Err.Raise 5, , "Image key not found"
     
-    gpImage = GetImage(Key)
+    gpImage = GetImage(key)
 
     On Error GoTo 0
     Exit Function
